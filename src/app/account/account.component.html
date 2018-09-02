@@ -1,0 +1,75 @@
+<mat-card class="col-md-8">
+  <div class="card-content">
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover table-striped" [mfData]="accounts" #mf="mfDataTable"   [mfRowsOnPage]="5">
+        <thead>
+          <tr>
+            <th style="width: 10%;text-align: center;">
+              <mfDefaultSorter by="number">Number </mfDefaultSorter>
+            </th>
+            <th style="width: 25%;text-align: center;">
+              <mfDefaultSorter by="currency">Currency Type </mfDefaultSorter>
+            </th>
+            <th style="width: 10%;text-align: center;">
+              <mfDefaultSorter by="amount">Amount </mfDefaultSorter>
+            </th>
+            <th style="width: 10%;text-align: center;">
+              Transfer
+            </th>
+            <th style="width: 10%;text-align: center;">
+              Deposit
+            </th>
+            <th style="width: 10%;text-align: center;">
+              Delete
+            </th>
+            <th style="width: 25%;text-align: center;">
+            </th>
+          </tr>
+        </thead>
+        <tbody style="text-align: center;">
+          <tr *ngFor="let acc of mf.data; let i=index">
+            <td>
+              {{acc.number}}
+            </td>
+            <td>
+              {{acc.currency}}
+            </td>
+            <td>
+              {{acc.amount | number:'.2'}}
+            </td>
+            <td>
+              <button class="button" mat-fab (click)="goTransfer(acc.number, acc.currency)">
+                <i class="material-icons">
+                  transform
+                </i>
+              </button>
+            </td>
+            <td>
+              <button class="button" mat-fab (click)="goDeposit(acc.number, acc.currency)">
+                <i class="material-icons">
+                  money
+                </i>
+              </button>
+            </td>
+            <td>
+              <button class="button" mat-fab (click)="openDialog(acc.number, acc.currency, acc.amount)">
+                <i class="material-icons">
+                  delete
+                </i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="7">
+              <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]">
+                
+              </mfBootstrapPaginator>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</mat-card>

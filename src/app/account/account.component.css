@@ -1,0 +1,16 @@
+th {
+    color: #229AD6;
+}
+
+td {
+    text-align: center;
+}
+
+.mat-fab.mat-accent {
+    color: white;
+}
+
+.button {
+    background-color: #229AD6;
+    color: white;
+}

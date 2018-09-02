@@ -1,0 +1,23 @@
+input {
+  text-align: center;
+}
+
+td {
+  width: 10%;
+  text-align: center;
+}
+
+.mat-form-field-infix {
+  width: auto;
+  min-width: 300px;
+}
+
+.mat-input-element {
+  caret-color: white;
+}
+
+.button {
+  margin: 20px;
+  background-color: #229AD6;
+  color: white;
+}

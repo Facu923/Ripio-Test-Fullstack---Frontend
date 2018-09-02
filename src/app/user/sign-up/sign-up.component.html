@@ -1,0 +1,56 @@
+<form class="col s12 white" #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)">
+  <div class="row">
+    <!-- USERNAME -->
+    <div class="input-field col s6">
+      <input class="validate" type="text" name="UserName" #UserName="ngModel" [(ngModel)]="user.UserName" required>
+      <label data-error="Required field!">UserName</label>
+    </div>
+    <!-- EMAIL -->
+    <div class="input-field col s6">
+      <input class="validate" type="text" name="Email" #Email="ngModel" [(ngModel)]="user.Email" [pattern]="emailPattern">
+      <label data-error="Invalid email!">Email</label>
+    </div>
+  </div>
+  <div class="row">
+    <!-- PASSWORD -->
+    <div class="input-field col s6">
+      <input class="validate" type="password" name="Password1" #Password1="ngModel" [(ngModel)]="user.Password1" required minlength="8">
+      <label [attr.data-error]="Password1.errors!=null?(Password1.errors.required?'Required field!':'Minimum 8 characters needed'):''">Password</label>
+    </div>
+    <!-- REPEAT PASSWORD -->
+    <div class="input-field col s6">
+      <input class="validate" type="password" name="Password2" #Password2="ngModel" [(ngModel)]="user.Password2" required minlength="8">
+      <label [attr.data-error]="Password2.errors!=null?(Password2.errors.required?'Required field!':'Minimum 8 characters needed'):''">Repeat Password</label>
+    </div>
+  </div>
+  <div class="row">
+    <!-- FIRST NAME -->
+    <div class="input-field col s6">
+      <input type="text" name="FirstName" #FirstName="ngModel" [(ngModel)]="client.FirstName">
+      <label>First Name</label>
+    </div>
+    <!-- LASTNAME -->
+    <div class="input-field col s6">
+      <input type="text" name="LastName" #LastName="ngModel" [(ngModel)]="client.LastName">
+      <label>Last Name</label>
+    </div>
+  </div>
+  <div class="row">
+    <!-- ID CARD -->
+    <div class="input-field col s6">
+      <input type="text" name="IDCard" #IDCard="ngModel" [(ngModel)]="client.idcard" required>
+      <label>ID Card</label>
+    </div>
+    <!-- PHONE -->
+    <div class="input-field col s6">
+      <input type="text" name="Phone" #Phone="ngModel" [(ngModel)]="client.phone">
+      <label>Phone</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <!-- BUTTON SUBMIT -->
+      <button [disabled]="!userRegistrationForm.valid" class="btn-large btn-submit" type="submit">Submit</button>
+    </div>
+  </div>
+</form>

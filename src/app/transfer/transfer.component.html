@@ -1,0 +1,74 @@
+<mat-card class="col-md-8" *ngIf="accountsTo">
+  <div class="card-content">
+
+    <table class="full-width" cellspacing="0">
+      <thead>
+        <tr>
+          <th style="width: 15%;text-align: center;">ACCOUNT FROM</th>
+          <th style="width: 15%;text-align: center;">TRANSFER<br>{{currencyFrom}}</th>
+          <th style="width: 15%;text-align: center;">ACCOUNT TO</th>
+          <th style="width: 55%">
+            <button mat-mini-fab color="warn" (click)="goBack()">
+              <i class="material-icons">
+                arrow_back_ios
+              </i>
+            </button>
+            
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <!-- ACCOUNT NUMBER FROM -->
+            <mat-form-field class="full-width">
+              <mat-label>Account Number From</mat-label>
+              <input matInput value={{accountNumberFrom}} readonly>
+            </mat-form-field>
+          </td>
+          <td>
+            
+          </td>
+          <td>
+            <!-- ACCOUNT NUMBER TO -->
+            <mat-dialog-content [formGroup]="form">
+
+              <mat-form-field>
+                <mat-select [(value)]="accountNumberTo">
+                  <mat-option *ngFor="let acc of accountsTo" [value]="acc.number">
+                    {{acc.number}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            
+            </mat-dialog-content>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <!-- AMOUNT AVAILABLE FROM -->
+            <mat-form-field class="full-width">
+              <mat-label>Amount Available From</mat-label>
+              <input matInput value="{{amountAvailableFrom | number:'.2'}}" readonly>
+            </mat-form-field>
+          </td>
+          <td>
+            <button class="button" mat-fab color="primary" (click)="doTransfer()">
+              <i class="material-icons">
+                arrow_forward
+              </i>
+            </button>
+          </td>
+          <td>
+            <!-- AMOUNT TO -->
+            <mat-form-field class="full-width">
+              <mat-label>Amount To</mat-label>
+              <input matInput value={{amountTo}} [(ngModel)]="amountTo">
+            </mat-form-field>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</mat-card>

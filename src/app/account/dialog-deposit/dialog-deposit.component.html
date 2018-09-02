@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>Deposit in account ({{number}}) of {{currency}}</h2>
+
+<mat-form-field class="full-width">
+  <mat-label>Amount</mat-label>
+  <input matInput value={{amountNew}} [(ngModel)]="amountNew">
+</mat-form-field>
+
+<mat-dialog-actions>
+    <button mat-raised-button color="warn" (click)="close()">NO</button>
+    <button mat-raised-button color="primary" (click)="save()">YES</button>
+</mat-dialog-actions>

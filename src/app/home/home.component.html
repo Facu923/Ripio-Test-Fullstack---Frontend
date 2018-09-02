@@ -1,0 +1,43 @@
+<nav>
+  <div class="nav-wrapper">
+    <a href="https://www.ripio.com/es/" class="brand-logo center">
+      Ripio
+    </a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li>
+        <a (click)="Logout()">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="row" *ngIf="actualUser&&actualClient">
+  <div class="col s12 m2">
+    <div class="card">
+      <div class="card-content">
+        <span><strong>Username:</strong> {{actualUser.username}}</span>
+        <br>
+        <span><strong>Email:</strong> {{actualUser.email}}</span>
+        <br>
+        <span><strong>Full Name:</strong> {{actualClient.firstname}} {{actualClient.lastname}}</span>
+        <br>
+        <span><strong>ID Card:</strong> {{actualClient.idcard}}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button *ngIf="!transferActive" class="button" mat-fab (click)="openDialogAddAccount()">
+    <i class="material-icons">
+      add
+    </i>
+</button>
+
+<app-account *ngIf="accounts && !transferActive" [accounts]="accounts"
+            (transferActive)="eventTransferActive($event)"
+            (accountNumberFrom)="eventaccountNumberFrom($event)"
+            (currencyFrom)="eventCurrencyFrom($event)">
+</app-account>
+
+<app-transfer *ngIf="transferActive" [accountNumberFrom]="accountNumberFrom"
+              [currencyFrom]="currencyFrom"
+              (transferActive)="eventTransferActive($event)"></app-transfer>
