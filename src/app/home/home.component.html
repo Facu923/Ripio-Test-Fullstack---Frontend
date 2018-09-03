@@ -26,18 +26,36 @@
   </div>
 </div>
 
-<button *ngIf="!transferActive" class="button" mat-fab (click)="openDialogAddAccount()">
+<button *ngIf="!transferActive && !transferView" class="button" mat-fab (click)="openDialogAddAccount()">
     <i class="material-icons">
       add
     </i>
 </button>
 
-<app-account *ngIf="accounts && !transferActive" [accounts]="accounts"
+<button *ngIf="!transferActive && !transferView" class="button" mat-fab (click)="displayTransfers()">
+  <i class="material-icons">
+    search
+  </i>
+</button>
+
+<button *ngIf="transferView && !transferActive" mat-mini-fab color="warn" class="button-back" (click)="goBackAccounts()">
+  <i class="material-icons">
+    arrow_back_ios
+  </i>
+</button>
+
+<app-account *ngIf="accounts && !transferActive && !transferView" [accounts]="accounts"
             (transferActive)="eventTransferActive($event)"
+            (transferView)="eventTransferView($event)"
             (accountNumberFrom)="eventaccountNumberFrom($event)"
             (currencyFrom)="eventCurrencyFrom($event)">
 </app-account>
 
-<app-transfer *ngIf="transferActive" [accountNumberFrom]="accountNumberFrom"
+<app-transfer *ngIf="transferActive && !transferView" [accountNumberFrom]="accountNumberFrom"
               [currencyFrom]="currencyFrom"
-              (transferActive)="eventTransferActive($event)"></app-transfer>
+              (transferActive)="eventTransferActive($event)">
+</app-transfer>
+
+<app-transfer-view *ngIf="transferView" [accountNumberFrom]="accountNumberFrom">
+
+</app-transfer-view>

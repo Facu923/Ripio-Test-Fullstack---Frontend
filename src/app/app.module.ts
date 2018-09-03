@@ -27,6 +27,7 @@ import { HomeComponent } from './home/home.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { AccountComponent } from './account/account.component';
 import { TransferComponent } from './transfer/transfer.component';
+import { TransferViewComponent } from './transfer-view/transfer-view.component';
 
 // Material
 import { MatCardModule, MatButtonModule, MatDialogModule,
@@ -52,7 +53,8 @@ import { DialogDepositComponent } from './account/dialog-deposit/dialog-deposit.
     DialogActionsComponent,
     DialogAddAccountComponent,
     TransferComponent,
-    DialogDepositComponent
+    DialogDepositComponent,
+    TransferViewComponent
   ],
   imports: [
     BrowserModule,

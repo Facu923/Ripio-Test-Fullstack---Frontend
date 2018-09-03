@@ -18,12 +18,29 @@ export class TransferService {
     let transferHeader = new HttpHeaders().set('Authorization', token);
 
     // Body
-    const transferBody = {
+    /*const transferBody = {
       'accountFrom': this.URL_BASE + 'accounts/' + accountFromId + '/',
       'accountTo': this.URL_BASE + 'accounts/' + accountToId + '/',
+      'amount': amount
+    };*/
+
+    const transferBody = {
+      'accountFrom': accountFromId,
+      'accountTo': accountToId,
       'amount': amount
     };
 
     return this.http.post<any>(this.URL_BASE + 'transfers/', transferBody, { headers: transferHeader });
+  }
+
+  getTransfers(): Observable<any> {
+
+    const token = 'Token ' + localStorage.getItem('userToken');
+
+    // Header
+    const transferHeader = new HttpHeaders().set('Authorization', token);
+
+    return this.http.get<any>(this.URL_BASE + 'transfers/', { headers: transferHeader });
+
   }
 }

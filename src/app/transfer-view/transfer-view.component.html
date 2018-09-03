@@ -1,0 +1,54 @@
+<mat-card class="col-md-8">
+  <div class="card-content">
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover table-striped" [mfData]="transfers" #mf="mfDataTable"   [mfRowsOnPage]="5">
+        <thead>
+          <tr>
+            <th style="width: 20%;text-align: center;">
+              <mfDefaultSorter by="number">Account From </mfDefaultSorter>
+            </th>
+            <th style="width: 20%;text-align: center;">
+              <mfDefaultSorter by="number">Account To </mfDefaultSorter>
+            </th>
+            <th style="width: 20%;text-align: center;">
+              <mfDefaultSorter by="currency">Amount </mfDefaultSorter>
+            </th>
+            <th style="width: 20%;text-align: center;">
+              <mfDefaultSorter by="amount">Date </mfDefaultSorter>
+            </th>
+            <th style="width: 20%;text-align: center;">
+            </th>
+          </tr>
+        </thead>
+        <tbody style="text-align: center;">
+          <tr *ngFor="let transf of mf.data; let i=index">
+            <td>
+                {{transf.accountfrom}}
+            </td>
+            <td>
+              {{transf.accountto}}
+            </td>
+            <td>
+              {{transf.amount | number:'.2'}}
+            </td>
+            <td>
+              {{transf.date | date}}
+            </td>
+            <td>
+              
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="7">
+              <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]">
+                
+              </mfBootstrapPaginator>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</mat-card>

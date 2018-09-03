@@ -26,6 +26,7 @@ export class AccountComponent implements OnInit {
 
   @Input() accounts: Account[];
   @Output() transferActive = new EventEmitter<boolean>();
+  @Output() transferView = new EventEmitter<boolean>();
   @Output() accountNumberFrom = new EventEmitter<number>();
   @Output() currencyFrom = new EventEmitter<string>();
     
@@ -68,7 +69,7 @@ export class AccountComponent implements OnInit {
                 this.accounts = this.accounts.filter(item => item.number !== accNumber);
                 this.toastr.info("Account " + accCurrency + " deleted.");
               },
-              (err : HttpErrorResponse)=>{
+              (err : HttpErrorResponse) => {
                 this.toastr.error("We cannot delete the account.");
             });
 
@@ -79,6 +80,7 @@ export class AccountComponent implements OnInit {
 
   goTransfer(number: number, currency: string) {
     this.transferActive.emit(true);
+    this.transferView.emit(false);
     this.accountNumberFrom.emit(number);
     this.currencyFrom.emit(currency);
   }

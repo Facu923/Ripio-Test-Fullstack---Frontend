@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit {
   public actualClient: Client;
   public accounts: Account[];
   public transferActive: boolean;
+  public transferView: boolean;
   public accountNumberFrom: number;
   public currencyFrom: string;
 
@@ -42,6 +43,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
 
     this.transferActive = false;
+    this.transferView = false;
 
     let accountAux: Account;
 
@@ -167,12 +169,26 @@ export class HomeComponent implements OnInit {
     this.transferActive = display;
   }
 
+  eventTransferView(display: boolean) {
+    this.transferView = display;
+  }
+
   eventaccountNumberFrom(accountNumber: number) {
     this.accountNumberFrom = accountNumber;
   }
 
   eventCurrencyFrom(currency: string) {
     this.currencyFrom = currency;
+  }
+
+  displayTransfers() {
+    this.transferView = true;
+    this.transferActive = false;
+  }
+
+  goBackAccounts() {
+    this.transferView = false;
+    this.transferActive = false;
   }
 
 
